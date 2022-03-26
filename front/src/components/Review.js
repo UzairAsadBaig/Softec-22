@@ -12,7 +12,7 @@ const Review = () => {
   return (
     <div>
         <div className='text-center'>
-        <h2>Give your review</h2>
+        <h3 className='fw-bold'>Give your review</h3>
            <Rating
             style={{ color: "orange" }}
             initialRating={rating}
@@ -20,9 +20,9 @@ const Review = () => {
             emptySymbol="fa fa-star-o fa-1x"
             fullSymbol="fa fa-star fa-1x"
           />
-        <input type="text" className="form-control mt-2" value={comment} onChange={(e)=>{setcomment(e.target.value)}}/>
+        <input type="text" className="form-control mt-3 mx-auto mb-3" style={{ width: "50%" }} value={comment} onChange={( e ) => { setcomment( e.target.value ) }} />
         <button className='btn btn-primary mt-2 mb-2' onClick={sendreview}>Submit Review</button>
-        <h2 className='mt-3'>Latest Reviews</h2>
+        <h3 className='mt-3 fw-bold'>Latest Reviews</h3>
          {doctor && (doctor.map(review=>{
               return <div className="text-left">
                     <Rating

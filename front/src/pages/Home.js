@@ -1,4 +1,6 @@
 import React,{useState} from 'react'
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import card from '../Data/card';
 import './../css/Home.css'
 
@@ -29,8 +31,10 @@ const Home = () => {
 }
 
   return (
-      <>
-      <div className='container'>
+    <>
+
+      <Navbar />
+      <div className='container mt-4'>
             <div className="row">
                 <div className="col-md-12 mt-5 mb-2">
                     <h1 className="font-weight-bold text-center heading-awesome m-nav text-span5">Find Your<span className='text-span'> Doctor</span> Here</h1>
@@ -48,6 +52,9 @@ const Home = () => {
              {CardAdv()}
         </div>
       </div>
+
+
+      <Footer />
        
     </>
   )

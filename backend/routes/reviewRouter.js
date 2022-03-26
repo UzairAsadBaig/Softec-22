@@ -23,7 +23,7 @@ const reviewRouter=express.Router( {
 
 //! Below routes are on for logged-in users 
 reviewRouter.use( protect ); //protecting below routes
-reviewRouter.route( '/' )
+reviewRouter.route( '/', )
     .get( getAllReviews )
     .post( restrictTo( 'patient' ), setUserId, createReview )
 

@@ -17,10 +17,10 @@ exports.setUserId=( req, res, next ) => {
 
 
 //Fix: Get all the reviews 
-exports.getAllReviews=factory.getAll( Review );
+exports.getAllReviews=factory.getAll( Review, { path: 'patient' } );
 
 //Fix: get a review based on id
-exports.getReview=factory.getOne( Review );
+exports.getReview=factory.getOne( Review, { path: 'patient' } );
 
 //Fix: Create a review
 exports.createReview=factory.createOne( Review );

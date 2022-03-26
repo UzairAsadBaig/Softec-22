@@ -15,7 +15,7 @@ const changeUser=(e)=>{
 }
 
 return (
-<section className="signup">
+  <section className="signup my-4">
   <div className="signup-content">
     <div className={`signup-form `} >
       <h2 className="form-title">Sign up</h2>

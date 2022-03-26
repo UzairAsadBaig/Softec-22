@@ -117,12 +117,11 @@ reviewSchema.post( 'save', function ( doc, next ) {
 
 
 // ! QUERRY MIDDLEWARE: runs before executing any find query
-reviewSchema.pre( /^find/, function ( next ) {
-    // this.populate( {
-    //     path: 'user',
-    //     select: 'name photo'
-    // } )
+reviewSchema.pre( 'find', function ( next ) {
+
+    this.populate( { path: 'patient' } )
     next();
+
 } )
 
 

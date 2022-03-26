@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../css/signup.css';
 
 export default function Signin() {
@@ -7,7 +8,7 @@ export default function Signin() {
   <div className="signin-content">
     <div className="signin-image">
       <figure><img src={require('../img/signin-image.jpg')} alt="sing up image" /></figure>
-      <a href="#" className="signup-image-link">Create an account</a>
+          <Link to="/signup" className="signup-image-link">Create an account</Link>
     </div>
     <div className="signin-form">
       <h2 className="form-title">Sign in</h2>

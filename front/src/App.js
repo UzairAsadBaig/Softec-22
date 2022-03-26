@@ -9,13 +9,42 @@ import Signin from "./components/Signin";
 import Sidenavbar from "./components/Sidenavbar";
 import Home from "./pages/Home";
 import Profile from "./components/Profile";
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
   return (
     <>
-    
-    <Profile></Profile>
+
+      <Routes>
+        <Route exact path="login" element={<Signin />} />
+        <Route exact path="signup" element={<Signup />} />
+
+
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute redirectPath="/login" >
+              <Home />
+            </ProtectedRoute>
+
+
+
+          }
+        />
+
+
+      </Routes>
+
+
+
+
+      {/* <Routes>
+     <Route exact path="/"/>
+
+   </Routes> */}
+
+
     </>
   );
 }
