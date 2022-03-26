@@ -7,7 +7,7 @@ const User=require( './userModel' );
 
 
 const reviewSchema=new mongoose.Schema( {
-    review: {
+    comment: {
         type: String,
         trim: true,
         required: [ true, "Review can't be empty!" ]
