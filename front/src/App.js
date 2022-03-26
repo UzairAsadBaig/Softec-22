@@ -7,16 +7,15 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Sidenavbar from "./components/Sidenavbar";
+import Home from "./pages/Home";
 
 
 function App() {
   return (
     <>
-     
- {/* <Signup/> */}
- {/* <Signin/> */}
-<Sidenavbar/>
-
+     <Routes>
+       <Route path="/" exact element={<Home/>}/>
+     </Routes>
 
     </>
   );

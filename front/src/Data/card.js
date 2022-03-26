@@ -1,7 +1,7 @@
  const card = [
   {
      id: 1,
-     image : "no",
+     image : "No",
      name : "Jinnah Hospital",
      Doc : "Numan Anees",
      Specialization : "Heart",
@@ -12,7 +12,7 @@
      image : "no",
      name : "Jinnah",
      Doc : "Numan",
-     Specialization : "Heart no",
+     Specialization : "Brain",
 
   },
   {
@@ -20,7 +20,7 @@
      image : "no",
      name : "Hua",
      Doc : "Uzair",
-     Specialization : "Hearts",
+     Specialization : "Surgery",
 
   },
   {
@@ -28,7 +28,7 @@
      image : "no",
      name : "Hua",
      Doc : "Uzair",
-     Specialization : "Hearts",
+     Specialization : "Kidney",
 
   },
   {
@@ -36,7 +36,7 @@
      image : "no",
      name : "Hua",
      Doc : "Uzair",
-     Specialization : "Hearts",
+     Specialization : "kidney",
 
   },
   

@@ -1,0 +1,71 @@
+.form-inp {
+  width: 44%;
+  margin-bottom: 1.3rem;
+  margin-top: 0.4rem;
+  border-radius: 29px;
+  outline: none;
+  padding: 0.6rem;
+  padding-left: 0.9rem;
+  box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
+  border: 2px solid #04e9ae;
+}
+.form-inp:focus {
+  border: 2px solid #b3b3b3;
+}
+/* span */
+.text-span {
+  color: #04e9ae;
+  text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
+    1px -1px 0 rgb(33 43 68 / 0%), -1px 1px 0 transparent,
+    1px 1px 0 rgb(33 43 68 / 0%);
+}
+.text-span3 {
+  color: #3eebd4;
+  text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
+    1px -1px 0 rgb(33 43 68 / 0%), -1px 1px 0 transparent,
+    1px 1px 0 rgb(33 43 68 / 0%);
+}
+.text-span5 {
+  text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
+    1px -1px 0 rgb(33 43 68 / 0%), -1px 1px 0 transparent,
+    1px 1px 0 rgb(33 43 68 / 0%);
+}
+.text-span4 {
+  background-color: #3eebd4;
+  color: white;
+  padding: 0.5rem 1.3rem;
+  border-radius: 25px;
+  font-weight: 450;
+}
+.text-top {
+  margin-top: 0.4rem !important;
+}
+.text-span4:hover {
+  background-color: white;
+  color: #04e9ae;
+  padding: 0.5rem 1.3rem;
+  border-radius: 25px;
+  font-weight: 450;
+  border: 2px solid #04e9ae;
+  outline: none;
+}
+.heading-awesome {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 3.1rem;
+  color: white;
+  /* -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px; */
+  margin-bottom: 1.2rem;
+}
+.heading-awesome-small {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  color: white;
+  /* -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px; */
+  margin-bottom: 2rem;
+}
