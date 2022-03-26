@@ -16,6 +16,7 @@ const AppError=require( './utils/appError' );
 const globalErrorHandler=require( './controllers/errorController' );
 const userRouter=require( './routes/userRouter' );
 const clinicRouter=require( './routes/clinicRouter' );
+const reviewRouter=require( './routes/reviewRouter' );
 // const RequestApproval=require( './models/requestApprovalModel' );
 
 const app=express();
@@ -79,6 +80,7 @@ app.use( xss() ) //clean  malicious html code from user input
 
 app.use( '/api/v1/users', userRouter );
 app.use( '/api/v1/clinic', clinicRouter );
+app.use( '/api/v1/review', reviewRouter );
 
 
 

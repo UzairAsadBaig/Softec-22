@@ -21,6 +21,7 @@ const Profile=() => {
         <div className="col-6 inputBox mt-3">
           <Input width="70%" name="phone" disabled={true} type="text" margin="mx-auto" label='c' labelVal="Phone no" />
 
+
         </div>
 
         <div className="col-6 inputBox mt-3">

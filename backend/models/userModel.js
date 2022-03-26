@@ -21,7 +21,18 @@ const userSchema=new mongoose.Schema( {
         enum: [ "male", "female", "others" ],
         required: [ true, "Provide your gender" ]
     },
+    ratingsAverage: {
+        type: Number,
+        default: 1,
+        min: [ 1, "Rating shouuld be greater than or equal to 1.0" ],
+        max: [ 5, "Rating shouuld be less than or equal to 5.0" ],
+        set: ( val ) => Number( val.toFixed( 1 ) )
+    },
 
+    ratingsQuantity: {
+        type: Number,
+        default: 0
+    },
 
     // photo: {
     //     type: String,
@@ -86,7 +97,7 @@ const userSchema=new mongoose.Schema( {
         required: [ true, "Provide Speciality" ],
 
     },
-    
+
 
 },
     {
@@ -100,16 +111,21 @@ const userSchema=new mongoose.Schema( {
 
     } );
 
-userSchema.virtual("bookedSlots",{
-    ref:"Booking",
-    localField:"_id",
-    foreignField:"patient"
-})
-userSchema.virtual("bookingSchedule",{
-    ref:"Booking",
-    localField:"_id",
-    foreignField:"doctor"
-})
+userSchema.virtual( "bookedSlots", {
+    ref: "Booking",
+    localField: "_id",
+    foreignField: "patient"
+} )
+userSchema.virtual( "bookingSchedule", {
+    ref: "Booking",
+    localField: "_id",
+    foreignField: "doctor"
+} )
+userSchema.virtual( 'reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'doctor'
+} )
 
 
 //Todo: ************************** Document/query/aggregation middlewares ******************************

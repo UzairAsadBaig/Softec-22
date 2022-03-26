@@ -53,7 +53,7 @@ userRouter.get( '/me', getUser )
 
 
 //! Below routes are restricted to only admins
-userRouter.use( restrictTo( 'admin' ) ); // restricting routes
+// userRouter.use( restrictTo( 'admin' ) ); // restricting routes
 userRouter.route( "/" )
     .get( getAllUsers )
     .post( createUser )
