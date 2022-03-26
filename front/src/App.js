@@ -24,6 +24,8 @@ function App() {
       <Profile />
 
 
+      {/* <Signup/> */}
+      <Home></Home>
     </>
   );
 }
