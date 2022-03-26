@@ -13,13 +13,18 @@ import ProtectedRoute from './components/ProtectedRoute';
 import DocProfile from "./components/Dashboard/DocProfile";
 import Booking from "./components/Dashboard/Booking";
 import Clinic from "./components/Dashboard/Clinic";
+import UserState from "./context/users/UserState";
+import AppState from "./context/appState/AppState";
+
+
 function App() {
   return (
     <>
-
-      <Routes>
-        <Route exact path="login" element={<Signin />} />
-        <Route exact path="signup" element={<Signup />} />
+      <UserState>
+        <AppState>
+          <Routes>
+            <Route exact path="login" element={<Signin />} />
+            <Route exact path="signup" element={<Signup />} />
 
         <Route exact path="dashboard" element={<Sidenavbar />}>
               <Route exact path="" element={<DocProfile />} />
@@ -37,13 +42,20 @@ function App() {
               <Home />
             </ProtectedRoute>
 
-
-
           }
+
+
         />
 
 
-      </Routes>
+
+            {/* <Route exact path="login" element=""> */}
+
+          </Routes>
+
+        </AppState>
+
+      </UserState>
 
 
 

@@ -10,11 +10,11 @@ const ProtectedRoute=( {
 
   // Check user token here
 
-  // const { user }=useContext( UsersContext );
-  // const jwt=Cookies.get( 'jwt' );
-  // console.log( user )
+  const { user }=useContext( UsersContext );
+  const jwt=Cookies.get( 'jwt' );
+  console.log( user )
 
-  if ( true ) {
+  if ( !jwt ) {
 
     return <Navigate to={redirectPath} replace />;
 

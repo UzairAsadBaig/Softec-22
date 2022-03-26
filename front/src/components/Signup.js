@@ -9,7 +9,7 @@ export default function Signup() {
 const [user,setUser]=useState('patient');
  
 const changeUser=(e)=>{
-  if(e.target.name!=user){
+  if ( e.target.name!==user ) {
     e.target.name==='patient' ? setUser('patient') :setUser('doctor');
   }  
 }
