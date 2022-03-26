@@ -124,7 +124,7 @@ exports.deleteMe=catchAsync( async ( req, res, next ) => {
 
 
 // FIX: get all users
-exports.getAllUsers=factory.getAll( User );
+exports.getAllUsers=factory.getAll( User, null, { role: 'doctor' } );
 
 // FIX: get single users basaed on id
 exports.getUser=factory.getOne( User, { path: 'reviews appointmentSchedule'  } );

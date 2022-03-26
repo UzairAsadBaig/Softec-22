@@ -11,11 +11,7 @@ const userSchema=new mongoose.Schema( {
         trim: true
     },
 
-    address: {
-        type: String,
-        required: [ true, "Please Enter address!" ],
-        trim: true
-    },
+
     gender: {
         type: String,
         enum: [ "male", "female", "others" ],

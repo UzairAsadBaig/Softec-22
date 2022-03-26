@@ -20,6 +20,7 @@ exports.deleteOne = ( Model ) => {
             status: 'success',
             data: null
         } )
+
     } );
     
 }

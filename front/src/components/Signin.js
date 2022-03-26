@@ -4,10 +4,12 @@ import '../css/signup.css';
 import { useNavigate } from 'react-router-dom';
 import Api from '../Api';
 import UsersContext from '../context/users/UsersContext';
+import AppContext from '../context/appState/AppContext';
 
 export default function Signin() {
 
   const { Cookies, retrieveUserInfo }=useContext( UsersContext );
+  const { showAlert }=useContext( AppContext );
   const [ credentials, setCredentials ]=useState( {
     phone: "",
     password: ""
@@ -27,6 +29,8 @@ export default function Signin() {
 
       Cookies.set( 'jwt', res.data.token );
       console.log( Cookies.get( 'jwt' ) )
+      showAlert( "Logged in successfully", "success" );
+
       await retrieveUserInfo( res.data.data.user._id );
       navigate( '/' );
 

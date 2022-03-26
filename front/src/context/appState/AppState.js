@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppContext from './AppContext';
 
 
-
 const AppState=( props ) => {
-
 
   const [ alert, setAlert ]=useState( null );
 
@@ -17,6 +15,7 @@ const AppState=( props ) => {
     setTimeout( () => setAlert( null ), 3000 )
 
   }
+
 
   const onChangeGeneric=( stateVar, stateModifier ) => {
 

@@ -6,7 +6,12 @@ import Input from './Input'
 import moment from 'moment'
 import Review from './Review'
 import { DatePicker } from 'antd'
-const { RangePicker } = DatePicker;
+import Navbar from './Navbar'
+import Footer from './Footer'
+import { useParams } from 'react-router-dom'
+import Api from '../Api'
+
+const { RangePicker }=DatePicker;
 
 
 
@@ -73,11 +78,23 @@ const Profile=() => {
 
 
 
+  const { id }=useParams();
+
+
+  const getDoctorData=( id ) => {
+    Api.get( `/users/${id}`, { headers: { Authorization: `` } } )
+  }
+
+  useEffect( () => {
+
+  }, [ third ] )
+
+
   return (
     <>
  {/* reviews */}
-
-      <div className="container mt-4">
+      <Navbar />
+      <div className="container" style={{ marginTop: "6rem" }}>
 
         <div className="row">
 
@@ -117,7 +134,7 @@ const Profile=() => {
 
           </div>
 
-          <div className="col-md-7 ps-2">
+          <div className="col-md-7 ps-5">
 
             <div className="card profile_card" >
 
@@ -137,9 +154,6 @@ const Profile=() => {
       
 {/* reviews */}
 
-              <div>
-              <Review/>
-              </div>
 
 
                 <div className="container text-center" style={{"padding":"5rem"}}>
@@ -171,7 +185,7 @@ const Profile=() => {
                 </div>
               </div>
             </div>
-            
+      <Footer />
     </>
 
   )

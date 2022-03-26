@@ -22,6 +22,7 @@ function App() {
     <>
       <UserState>
         <AppState>
+
           <Routes>
             <Route exact path="login" element={<Signin />} />
             <Route exact path="signup" element={<Signup />} />
@@ -46,6 +47,20 @@ function App() {
 
 
         />
+
+
+
+            <Route
+              path="/details/:id"
+              element={
+                <ProtectedRoute redirectPath="/login" >
+                  <Profile />
+                </ProtectedRoute>
+
+              }
+
+
+            />
 
 
 
