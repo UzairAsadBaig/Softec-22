@@ -25,12 +25,16 @@ const ClinicSchema=new mongoose.Schema( {
   openingDays:[{
     type:String
   }]
-  
   ,
   doctor:{
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    // required: [true, "Please join a doctor ID"],
+    required: [true, "Please join a doctor ID"],
+  },
+  contactInfo:{
+    type: String,
+    required: [ true, "Please enter clinic contact info" ],
+    trim: true
   }
 
 
