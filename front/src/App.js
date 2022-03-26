@@ -14,7 +14,7 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <>
-    {/* <Signup/> */}
+    <Signin/>
 
     </>
   );

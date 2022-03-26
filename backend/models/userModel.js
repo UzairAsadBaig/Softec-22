@@ -81,6 +81,17 @@ const userSchema=new mongoose.Schema( {
 
     passwordResetTokenExpires: Date,
 
+    speciality: {
+        type: String,
+        required: [ true, "Provide Speciality" ],
+
+    },
+    appointmentSchedule:[
+      {
+       to:{type:String}, 
+       from:{type:String}, 
+      }
+    ]
 
 
 },

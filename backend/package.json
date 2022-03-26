@@ -1,5 +1,5 @@
 {
-  "name": "Al Kareem City",
+  "name": "HealthCare",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -10,7 +10,7 @@
     "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js",
     "dev:js": "parcel ./public/js/index.js"
   },
-  "author": "Fasih ur Rehman, Muhammad Uzair Baig, Muzamil Ahmad, Muhammad Saeed",
+  "author": "Numan Anees, Muhammad Uzair Baig, Muzamil Ahmad",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

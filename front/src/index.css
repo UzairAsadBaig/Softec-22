@@ -3,7 +3,7 @@ body {
   font-family: Poppins;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #334062;
+  /* background-color: #334062; */
 }
 
 code {

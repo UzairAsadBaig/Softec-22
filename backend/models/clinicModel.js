@@ -7,7 +7,7 @@ const validator=require( "validator" );  // 3rd part validation package
 
 
 //Optimize:  ************************** Clinic Schema ******************************
-const Clinic=new mongoose.Schema( {
+const ClinicSchema=new mongoose.Schema( {
   name: {
     type: String,
     required: [ true, "Please enter clinic name" ],
@@ -22,7 +22,7 @@ const Clinic=new mongoose.Schema( {
    to:{type:String}, 
    from:{type:String}, 
   },
-  opeingDays:[{
+  openingDays:[{
     type:String
   }]
   
@@ -30,7 +30,7 @@ const Clinic=new mongoose.Schema( {
   doctor:{
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: [true, "Please join a doctor ID"],
+    // required: [true, "Please join a doctor ID"],
   }
 
 
@@ -63,7 +63,7 @@ const Clinic=new mongoose.Schema( {
 //Todo: ************************** Document/query/aggregation middlewares ******************************
 
 // ******** DOCUMENT MIDDLEWARE: runs before .save() and .create()
-Clinic.pre( 'save', async function ( next ) {
+ClinicSchema.pre( 'save', async function ( next ) {
   // HERE 'this' keyword === current document 
 
 
@@ -72,7 +72,7 @@ Clinic.pre( 'save', async function ( next ) {
 
 
 // ******** QUERRY MIDDLEWARE: runs before executing any find query
-Clinic.pre( /^find/, async function ( next ) {
+ClinicSchema.pre( /^find/, async function ( next ) {
   // HERE 'this' keyword === querry Obj
 
 
@@ -82,7 +82,7 @@ Clinic.pre( /^find/, async function ( next ) {
 
 
 // ******** AGGREGATION MIDDLEWARE: runs before executing Agrregation pipepline
-Clinic.pre( 'aggregate', async function ( next ) {
+ClinicSchema.pre( 'aggregate', async function ( next ) {
     // HERE 'this' keyword === aggregation Obj
 
 
@@ -96,12 +96,12 @@ Clinic.pre( 'aggregate', async function ( next ) {
 //TODO:  ************************** instance methods of documents ******************************
 
 
-Clinic.methods.checkName=async function () {
+ClinicSchema.methods.checkName=async function () {
   return ""; // return anything based on logic
 }
 
 
-const Clinic=mongoose.model( 'Clinic', Clinic );
+const Clinic=mongoose.model( 'Clinic', ClinicSchema );
 
 
 module.exports=Clinic;
