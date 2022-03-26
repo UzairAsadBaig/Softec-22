@@ -137,10 +137,11 @@ exports.updateUser=catchAsync( async ( req, res, next ) => {
     console.log( "param id: ", req.params.id )
     console.log( req.body )
     const data={
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        CNIC: req.body.CNIC,
+        name: req.body.name,
+        DOB: req.body.DOB,
+        phone: req.body.phone,
+        address: req.body.address,
+        gender: req.body.gender,
     }
     const doc=await User.findByIdAndUpdate( req.params.id, data, {
         new: true,

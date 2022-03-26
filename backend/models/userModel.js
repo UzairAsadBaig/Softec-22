@@ -2,7 +2,6 @@ const mongoose=require( 'mongoose' );
 const validator=require( "validator" );
 const bcrypt=require( 'bcryptjs' );
 const crypto=require( 'crypto' );
-const installments=require( "./installmentModel" );
 
 //Optimize:  ************************** User Modal Schema ******************************
 const userSchema=new mongoose.Schema( {
@@ -39,10 +38,10 @@ const userSchema=new mongoose.Schema( {
         default: true,
         select: false
     },
-    CNIC: {
+    phone: {
         type: String,
-        required: [ true, "please provide your CNIC" ],
-        unique: [ true, "User already exist!" ],
+        required: [ true, "please provide your phone number" ],
+        unique: [ true, "User already exist with this phone no!" ],
         validate: {
             validator: function ( val ) {
                 console.log( ( /^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/ ).test( val ) )
@@ -51,6 +50,12 @@ const userSchema=new mongoose.Schema( {
             message: "Phone No is incorrect"
         }
     },
+    DOB: {
+        type: String,
+        required: [ true, "Provide DOB" ],
+
+    },
+
 
     password: {
         type: String,
