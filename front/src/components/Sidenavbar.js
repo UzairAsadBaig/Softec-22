@@ -24,10 +24,10 @@ export default function Sidenavbar() {
               <li className={`${location.pathname.endsWith( "profile" )||location.pathname.endsWith( '/' )||location.pathname.endsWith( 'd' )? "active":''}`}>
                 <Link to='/dashboard/profile'>Profile</Link>
               </li>
-              <li className={`${location.pathname.endsWith( "plot" )? "active":''}`}>
+              <li className={`${location.pathname.endsWith( "clinic" )? "active":''}`}>
                 <Link to='/dashboard/clinic'>Clinic</Link>
               </li>
-              <li className={`${location.pathname.endsWith( "installments" )? "active":''}`}>
+              <li className={`${location.pathname.endsWith( "booking" )? "active":''}`}>
                 <Link to='/dashboard/booking'>Booking</Link>
               </li>
 
@@ -66,8 +66,8 @@ export default function Sidenavbar() {
               </div>
             </div>
           </nav>
-          <div className='content_container'>
-           {user._id && <Outlet />}
+          <div className='content_container' style={{'overflowX':'hidden'}}>
+           {<Outlet />}
           </div>
         </div>
       </div>

@@ -3,6 +3,9 @@ import './../css/Profile.css'
 import ClinicsTable from './ClicincsTable'
 import Input from './Input'
 import Review from './Review'
+import { DatePicker } from 'antd'
+const { RangePicker } = DatePicker;
+
 
 const Profile=() => {
 

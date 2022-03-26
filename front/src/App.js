@@ -10,8 +10,9 @@ import Sidenavbar from "./components/Sidenavbar";
 import Home from "./pages/Home";
 import Profile from "./components/Profile";
 import ProtectedRoute from './components/ProtectedRoute';
-
-
+import DocProfile from "./components/Dashboard/DocProfile";
+import Booking from "./components/Dashboard/Booking";
+import Clinic from "./components/Dashboard/Clinic";
 function App() {
   return (
     <>
@@ -19,6 +20,14 @@ function App() {
       <Routes>
         <Route exact path="login" element={<Signin />} />
         <Route exact path="signup" element={<Signup />} />
+
+        <Route exact path="dashboard" element={<Sidenavbar />}>
+              <Route exact path="" element={<DocProfile />} />
+              <Route exact path="profile" element={<DocProfile />} />
+              <Route exact path="clinic" element={<Clinic />} />
+              <Route exact path="booking" element={<Booking />} />
+              
+         </Route>
 
 
         <Route

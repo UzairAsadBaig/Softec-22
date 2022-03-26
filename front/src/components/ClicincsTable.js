@@ -1,6 +1,8 @@
 import React from 'react'
 import { Table, Tag, Space } from 'antd';
 import 'antd/dist/antd.css';
+
+
 const ClinicsTable=() => {
 
 

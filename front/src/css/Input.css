@@ -3,7 +3,7 @@
   border-right-style: hidden;
   border-left-style: hidden;
   /* border-bottom-style: groove; */
-  border-color: #3eebd4;
+  border-color: #030303;
   /* border-width: 3px; */
   margin-top: 2rem;
   position: relative;
@@ -22,7 +22,7 @@
 .input_label_l {
 
   margin-top: 1px;
-  font-size: 10px;
+  font-size: 13px;
   opacity: 0.6;
   /* text-align: right; */
   text-align: left;
@@ -35,7 +35,7 @@
 .input_label_r {
 
   margin-top: 1px;
-  font-size: 10px;
+  font-size: 13px;
   opacity: 0.6;
   /* text-align: right; */
   text-align: left;
@@ -48,7 +48,7 @@
 .input_label_c {
 
   margin-top: 1px;
-  font-size: 10px;
+  font-size: 13px;
   opacity: 0.6;
 
   text-align: left;

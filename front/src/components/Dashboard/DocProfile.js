@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Clinic() {
+export default function DocProfile() {
   return (
     <div>
-      clinic
+      profile
     </div>
   )
 }
