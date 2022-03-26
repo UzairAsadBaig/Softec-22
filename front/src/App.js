@@ -15,7 +15,7 @@ function App() {
   return (
     <>
     
-      <Profile></Profile>
+    <Profile></Profile>
     </>
   );
 }

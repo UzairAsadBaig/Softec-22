@@ -2,13 +2,14 @@ import React from 'react'
 import './../css/Profile.css'
 import ClinicsTable from './ClicincsTable'
 import Input from './Input'
-
+import Review from './Review'
 
 const Profile=() => {
 
 
   return (
-    <><div className="container">
+    <>
+    <div className="container">
       <h2 className='text-center profile_head' >Your <span>Profile</span></h2>
 
       <div className="row">
@@ -43,32 +44,20 @@ const Profile=() => {
           <Input width="70%" name="role" disabled={true} type="text" margin="mx-auto" label='c' labelVal="Role" />
 
         </div>
-
-
-        {/* IF role === doctor */}
+    {/* IF role === doctor */}
         <div className="col-12 inputBox mt-3">
           <Input width="70%" name="specialization" disabled={true} type="text" margin="mx-auto" label='c' labelVal="Specializations" />
         </div>
-
-
-
-
-
-
-
-        {/*  */}
-
-
-
-
-
       </div>
+    </div>
+    {/* reviews */}
+    <div>
+    <Review/>
     </div>
 
 
       <div className="container">
         <h2 className='text-center profile_head'>My Clinics</h2>
-
         <ClinicsTable />
       </div>
 
