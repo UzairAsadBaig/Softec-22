@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import UsersContext from './UsersContext';
-// import { useCookies } from 'react-cookie';
 import jwtDecode from 'jwt-decode';
 import Api from '../../Api';
 import Cook from 'js-cookie';
@@ -11,11 +10,12 @@ const UserState=( props ) => {
   const [ user, setUser ]=useState( {} );
 
 
-
+  // console.log( Cook )
 
   const Cookies=Cook.withAttributes( {
     path: '/', sameSite: 'Strict', secure: true, expires: 30
   } )
+  // console.log( Cookies.get( 'jwt' ) )
 
 
 
@@ -37,6 +37,7 @@ const UserState=( props ) => {
     }
 
   }, [] )
+
 
 
   return (

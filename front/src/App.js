@@ -10,15 +10,18 @@ import Sidenavbar from "./components/Sidenavbar";
 import Home from "./pages/Home";
 import Profile from "./components/Profile";
 import ProtectedRoute from './components/ProtectedRoute';
+import UserState from "./context/users/UserState";
+import AppState from "./context/appState/AppState";
 
 
 function App() {
   return (
     <>
-
-      <Routes>
-        <Route exact path="login" element={<Signin />} />
-        <Route exact path="signup" element={<Signup />} />
+      <UserState>
+        <AppState>
+          <Routes>
+            <Route exact path="login" element={<Signin />} />
+            <Route exact path="signup" element={<Signup />} />
 
 
         <Route
@@ -28,13 +31,20 @@ function App() {
               <Home />
             </ProtectedRoute>
 
-
-
           }
+
+
         />
 
 
-      </Routes>
+
+            {/* <Route exact path="login" element=""> */}
+
+          </Routes>
+
+        </AppState>
+
+      </UserState>
 
 
 

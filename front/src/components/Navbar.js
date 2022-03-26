@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import UsersContext from '../context/users/UsersContext';
 
 
 
 const Navbar=() => {
+  const { user }=useContext( UsersContext )
+  console.log( user )
+
+  const goTODashboard=( e ) => {
+
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div className="container-fluid">
@@ -22,14 +30,15 @@ const Navbar=() => {
 
                 <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>
 
-                Person
+                {user.name}
           </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><a className="dropdown-item" href="/">Logout</a></li>
           </ul>
         </li>
         <li className="nav-item mx-4">
-          <button type="button" className="btn btn-primary">My Bookings</button>
+
+              {user.role==='doctor'? <button type="button" className="btn btn-primary">My Bookings</button>:<button type="button" className="btn btn-primary" onCLick={goTODashboard}>Dashboard</button>}
         </li>
       </ul>
     </div>
