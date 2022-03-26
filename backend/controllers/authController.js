@@ -20,8 +20,7 @@ const createSignToken=( id ) => {
 
 const createTokenSendResponse=( statusCode, user, res, req ) => {
     const token=createSignToken( user._id );
-
-
+    
     const cookieOptions={
         // Cookie will expires and remove from browser in 90 days from now
 
@@ -57,7 +56,10 @@ exports.signUp=catchAsync( async ( req, res, next ) => {
         role: req.body.role||"patient",
         phone: req.body.phone,
         DOB: req.body.DOB,
-        gender: req.body.gender
+        gender: req.body.gender,
+        speciality:req.body.speciality,
+        appointmentSchedule:req.body.appointmentSchedule
+
         // role: req.body.role||"admin",
         // photo: req.body.photo
     } );
