@@ -15,7 +15,7 @@ function App() {
   return (
     <>
     {/* <Signup/> */}
-
+    <Home></Home>
     </>
   );
 }

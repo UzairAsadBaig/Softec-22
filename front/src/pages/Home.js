@@ -14,13 +14,12 @@ const Home = () => {
         <div className="card" style={{"width":"18rem"}}>
             <img className="card-img-top" src={l.image} style={{"padding":"0.1rem 1rem"}} alt="Card image cap"/>
             <div className="card-body">
-                <h5 className="card-title">{l.name}</h5>
-                <p className="card-text">Doctor Name: {l.Doc}</p>
-                <p className="card-text">Speciality: {l.Specialization}</p>
-
+                <h5 className="card-title"><span>Dr. </span>{l.Doc}</h5>
+                <p className="card-text" style={{"marginBottom":"0.1","marginTop":"0.4rem"}}>Speciality in <span style={{"color":"#04e9ae"}}>{l.Specialization}</span></p>
+                <p className='card-text' style={{"marginBottom":"0.4rem","marginTop":"0.1rem"}}>{l.phone}</p>
                 {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
                 <div className='text-center'>
-                <a href="#" className="btn btn-primary">Book Appointment</a>
+                <a href="#" className="btn btn-primary" style={{"backgroundColor":"#04e9ae","borderColor":"#04e9ae"}}>Book Appointment</a>
                 </div>
             </div>
         </div>

@@ -69,3 +69,6 @@
   -webkit-text-stroke-width: 1px; */
   margin-bottom: 2rem;
 }
+.card {
+  border-radius: 1.25rem;
+}
