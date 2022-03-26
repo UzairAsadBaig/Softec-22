@@ -6,7 +6,7 @@ const jwt=require( 'jsonwebtoken' );
 const User=require( "../models/userModel" );
 const catchAsync=require( "../utils/catchAysnc" );
 const AppError=require( "../utils/appError" );
-const sendEmail=require( "../utils/email" );
+// const sendphone=require( "../utils/phone" );
 
 //Todo:  ************************** helper functuions ******************************
 
@@ -50,13 +50,14 @@ const createTokenSendResponse=( statusCode, user, res, req ) => {
 // FIX: Signig up the user 
 exports.signUp=catchAsync( async ( req, res, next ) => {
     const newUser=await User.create( {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
+        name: req.body.name,
+        address: req.body.address,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
-        role: req.body.role||"user",
-        CNIC: req.body.CNIC
+        role: req.body.role||"patient",
+        phone: req.body.phone,
+        DOB: req.body.DOB,
+        gender: req.body.gender
         // role: req.body.role||"admin",
         // photo: req.body.photo
     } );
@@ -74,24 +75,24 @@ exports.signUp=catchAsync( async ( req, res, next ) => {
 exports.logIn=catchAsync( async ( req, res, next ) => {
 
     const {
-        email,
+        phone,
         password
     }=req.body;
     console.log( req.body )
 
 
-    //? (1) Checking if user inputed email or password
-    if ( !email||!password ) {
-        return next( new AppError( "Please provide email or password!", 400 ) );
+    //? (1) Checking if user inputed phone or password
+    if ( !phone||!password ) {
+        return next( new AppError( "Please provide phone or password!", 400 ) );
     }
 
     const user=await User.findOne( {
-        email
+        phone
     } ).select( '+password' );
 
     //? (3) Checking if user is a valid user
     if ( !user||!( await user.correctPassword( password, user.password ) ) ) {
-        return next( new AppError( "Incorrect email or password!", 401 ) );
+        return next( new AppError( "Incorrect phone or password!", 401 ) );
     }
 
     createTokenSendResponse( 200, user, res, req );
@@ -134,7 +135,7 @@ exports.protect=catchAsync( async ( req, res, next ) => {
     }
 
     if ( !token ) {
-        return next( new AppError( 'You are not logged in, please log in first! or email is incorrect', 401 ) );
+        return next( new AppError( 'You are not logged in, please log in first! or phone is incorrect', 401 ) );
     }
     // console.log( token );
 
@@ -236,16 +237,16 @@ exports.restrictTo=function ( ...roles ) {
 exports.forgotPassword=catchAsync( async ( req, res, next ) => {
 
     const {
-        email
+        phone
     }=req.body;
 
     const user=await User.findOne( {
-        email
+        phone
     } )
 
-    //? Checking the email entered by user is actually in database
+    //? Checking the phone entered by user is actually in database
     if ( !user ) {
-        return next( new AppError( `No user found with email: ${email}`, 404 ) );
+        return next( new AppError( `No user found with phone: ${phone}`, 404 ) );
     }
 
     // console.log( user )
@@ -265,15 +266,15 @@ exports.forgotPassword=catchAsync( async ( req, res, next ) => {
     // console.log( `resetToken in database: ${user.passwordResetToken}\n` );
 
 
-    //? Sending it to user's email
+    //? Sending it to user's phone
     const resetURL=`${req.protocol}://${req.get( 'host' )}/api/v1/users/resetPassword/${resetToken}`;
 
     const message=`Forgot your password? Submit a PATCH requets with your new password and passwordConfirm to :\n 
-    ${resetURL}\nIf you didn't forgot your password, please ignore this email! 😊`;
+    ${resetURL}\nIf you didn't forgot your password, please ignore this phone! 😊`;
 
     try {
-        await sendEmail( {
-            email: user.email,
+        await sendphone( {
+            phone: user.phone,
             subject: 'Your Password Reset Token (valid only for 10 minutes)',
             message
         } )
@@ -283,11 +284,11 @@ exports.forgotPassword=catchAsync( async ( req, res, next ) => {
         await user.save( {
             validateBeforeSave: false
         } )
-        next( new AppError( "There is an error occur in sending the email!, Please try again later", 500 ) )
+        next( new AppError( "There is an error occur in sending the phone!, Please try again later", 500 ) )
     }
 
     res.status( 200 ).json( {
-        message: "Password reset token send to your email"
+        message: "Password reset token send to your phone"
     } )
 
 } )

@@ -8,14 +8,20 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Sidenavbar from "./components/Sidenavbar";
 import Home from "./pages/Home";
+import Profile from "./components/Profile";
 
 
 function App() {
   return (
     <>
-     <Routes>
-       <Route path="/" exact element={<Home/>}/>
-     </Routes>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+      </Routes>
+
+      {/* <Signup/> */}
+      {/* <Signin/> */}
+      <Profile />
+
 
     </>
   );
