@@ -9,12 +9,12 @@ const Profile=() => {
 
   return (
     <><div className="container">
-      <h2 className='text-center profile_head'>Profile</h2>
+      <h2 className='text-center profile_head' >Your <span>Profile</span></h2>
 
       <div className="row">
 
         <div className="col-6 inputBox mt-3">
-          <Input width="70%" name="name" disabled={true} type="text" margin="mx-auto" label='c' labelVal="Name" />
+          <Input width="70%" name="name" disabled={true} type="text" margin="mx-auto" label='c' labelVal="Name" defaultValue="Numan Anees" />
 
         </div>
 

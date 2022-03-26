@@ -86,13 +86,7 @@ const userSchema=new mongoose.Schema( {
         required: [ true, "Provide Speciality" ],
 
     },
-    appointmentSchedule:[
-      {
-       to:{type:String}, 
-       from:{type:String}, 
-      }
-    ]
-
+    
 
 },
     {
@@ -106,7 +100,16 @@ const userSchema=new mongoose.Schema( {
 
     } );
 
-
+userSchema.virtual("bookedSlots",{
+    ref:"Booking",
+    localField:"_id",
+    foreignField:"patient"
+})
+userSchema.virtual("bookingSchedule",{
+    ref:"Booking",
+    localField:"_id",
+    foreignField:"doctor"
+})
 
 
 //Todo: ************************** Document/query/aggregation middlewares ******************************

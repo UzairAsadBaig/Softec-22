@@ -14,18 +14,8 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <>
-      <Signin />
-      {/* <Routes>
-        <Route path="/" exact element={<Home />} />
-      </Routes> */}
-
-      {/* <Signup/> */}
-      {/* <Signin/> */}
-      <Profile />
-
-
-      {/* <Signup/> */}
-      <Home></Home>
+    
+      <Profile></Profile>
     </>
   );
 }
