@@ -7,7 +7,6 @@ import './../css/Home.css'
 const Home = () => {
     const [cardDat, setCardData] = useState(card);
     const  [query,setQuery] = useState("");
-
     //cards
     const CardAdv = () => {
     return card.filter((i)=>i.Specialization.toUpperCase().includes(query)).map((l, i) => (
