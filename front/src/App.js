@@ -4,10 +4,20 @@ import {
 } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
+import Sidenavbar from "./components/Sidenavbar";
+
 
 function App() {
   return (
     <>
+     
+ {/* <Signup/> */}
+ {/* <Signin/> */}
+<Sidenavbar/>
+
+
     </>
   );
 }
