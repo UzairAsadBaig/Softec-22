@@ -14,7 +14,15 @@ import Profile from "./components/Profile";
 function App() {
   return (
     <>
-    <Signin/>
+      <Signin />
+      {/* <Routes>
+        <Route path="/" exact element={<Home />} />
+      </Routes> */}
+
+      {/* <Signup/> */}
+      {/* <Signin/> */}
+      <Profile />
+
 
     </>
   );
