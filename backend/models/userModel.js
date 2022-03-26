@@ -23,7 +23,6 @@ const userSchema=new mongoose.Schema( {
     },
     ratingsAverage: {
         type: Number,
-        default: 1,
         min: [ 1, "Rating shouuld be greater than or equal to 1.0" ],
         max: [ 5, "Rating shouuld be less than or equal to 5.0" ],
         set: ( val ) => Number( val.toFixed( 1 ) )
@@ -94,7 +93,6 @@ const userSchema=new mongoose.Schema( {
 
     speciality: {
         type: String,
-        required: [ true, "Provide Speciality" ],
 
     },
 
@@ -111,13 +109,13 @@ const userSchema=new mongoose.Schema( {
 
     } );
 
-userSchema.virtual( "bookedSlots", {
-    ref: "Booking",
+userSchema.virtual( "appointmentPlans", {
+    ref: "Appointment",
     localField: "_id",
     foreignField: "patient"
 } )
-userSchema.virtual( "bookingSchedule", {
-    ref: "Booking",
+userSchema.virtual( "appointmentSchedule", {
+    ref: "Appointment",
     localField: "_id",
     foreignField: "doctor"
 } )

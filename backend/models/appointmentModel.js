@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const bookingSchema = new mongoose.Schema(
+const appointmentSchema = new mongoose.Schema(
   {
     doctor: { type: mongoose.Schema.Types.ObjectID, ref: "User" },
     patient: { type: mongoose.Schema.Types.ObjectID, ref: "User" },
@@ -13,6 +13,6 @@ const bookingSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const booking = mongoose.model("Booking", bookingSchema);
+const appointment = mongoose.model("Appointment", appointmentSchema);
 
-module.exports = booking;
+module.exports = appointment;

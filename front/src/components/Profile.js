@@ -1,11 +1,40 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './../css/Profile.css'
 import ClinicsTable from './ClicincsTable'
 import Input from './Input'
 import Review from './Review'
+import { DatePicker } from 'antd'
+import moment from 'moment';
+const {RangePicker}=DatePicker;
 
 const Profile=() => {
 
+
+  const appointmentSchedule=[
+    {
+      to:'Feb 18 2022 14',
+      from:'Feb 18 2022 11'
+    },
+    {
+      to:'Feb 19 2022 14',
+      from:'Feb 18 2022 11'
+    },
+    {
+      to:'Feb 22 2022 14',
+      from:'Feb 18 2022 11'
+    },
+    {
+      to:'Feb 24 2022 14',
+      from:'Feb 18 2022 11'
+    },
+  ]
+
+
+  const [slotFree,setSlotfree]=useState('false');
+  // const [set]
+  const checkSlotAvailibility=(slot,slotArray)=>{
+    
+  }
 
   return (
     <>
@@ -59,8 +88,40 @@ const Profile=() => {
       <div className="container">
         <h2 className='text-center profile_head'>My Clinics</h2>
         <ClinicsTable />
-      </div>
 
+
+
+        <h2 className='text-center profile_head mt-5 mb-4' >Book Appointment </h2>
+          <RangePicker className='RangePicker'  showTime={{format:"HH:mm a"}} format="MMM DD yyyy HH:mm" style={{"zIndex":'1056!important'}} onChange={setFilter}/><br/>
+
+  <button type="button" className="btn btn-primary mt-3 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Book
+  </button>
+  <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true"  >
+    <div className="modal-dialog">
+      <div className="modal-content">
+        <div className="modal-header">
+          <h5 className="modal-title" id="exampleModalLabel">Book Appointment</h5>
+          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+        </div>
+        <div className="modal-body">
+        <form >
+
+        </form>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" className="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+      
     </>
 
   )
