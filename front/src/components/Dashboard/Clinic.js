@@ -71,7 +71,7 @@ export default function Clinic() {
     <p  style={{'opacity':'.5','float':'left'}}>Opening Hours</p>
     <RangePicker
      className='RangePicker'
-     showTime={{format:"HH:mm a"}}
+     showTime={{format:"HH a"}}
      format="HH:mm"
      onChange={setOpeningHours}
     

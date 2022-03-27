@@ -20,7 +20,7 @@ const { RangePicker }=DatePicker;
 const DocProfile=() => {
   const [ doc, setDoc ]=useState( {} );
 
-  const { id }=useParams();
+  // const { id }=useParams();
 
   const { Cookies, user }=useContext( UsersContext );
   const token=Cookies.get( 'jwt' );
@@ -121,7 +121,7 @@ const DocProfile=() => {
 
                 <div className="container text-center" style={{"padding":"5rem"}}>
                   <h2 className='text-center profile_head'>My Clinics</h2>
-                  <ClinicsTable />
+                  <ClinicsTable clinics={doc.clinics}/>
                   </div>
 
     </>
