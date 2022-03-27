@@ -3,7 +3,7 @@ import { Table, Tag, Space } from 'antd';
 import 'antd/dist/antd.css';
 
 
-const ClinicsTable=() => {
+const ClinicsTable=(props) => {
 
 
   const columns=[
@@ -64,8 +64,8 @@ const ClinicsTable=() => {
   ];
 
   const openingHoursToString=(obj)=>{
-    let start = (obj.from.split(' ')[obj.from.split(' ').length-1]) ;
-   let end = (obj.to.split(' ')[obj.to.split(' ').length-1]);
+    let start = obj.from ;
+   let end = obj.to;
    return `From ${start%12}${start<=12?'am':'pm'} to ${end}${end<=12?'am':'pm'}`;
   }
 
