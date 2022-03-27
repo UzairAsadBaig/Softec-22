@@ -21,30 +21,33 @@ export default function Signin() {
 
   const handleLogin=async ( e ) => {
     e.preventDefault();
-    const res=await Api.post( 'users/login', credentials );
-    console.log( res.data );
-    console.log( res.data.data );
+    try {
+      const res=await Api.post( 'users/login', credentials );
+      console.log( res.data );
+      console.log( res.data.data );
 
-    if ( res.data.status==="success" ) {
+      if ( res.data.status==="success" ) {
 
-      Cookies.set( 'jwt', res.data.token );
-      console.log( Cookies.get( 'jwt' ) )
-      showAlert( "Logged in successfully", "success" );
+        Cookies.set( 'jwt', res.data.token );
+        console.log( Cookies.get( 'jwt' ) )
+        showAlert( "Logged in successfully", "success" );
 
-      await retrieveUserInfo( res.data.data.user._id );
-      if ( res.data.data.user.role==='doctor' ) {
-        navigate( '/dashboard' );
+        await retrieveUserInfo( res.data.data.user._id );
+        if ( res.data.data.user.role==='doctor' ) {
+          navigate( '/dashboard' );
+
+        }
+        else {
+          navigate( '/' );
+
+        }
 
       }
-      else {
-        navigate( '/' );
-
-      }
-
+    } catch ( error ) {
+      showAlert( 'Inputs are invalid!', 'danger' )
     }
-    else {
-      showAlert( 'Invalid Credentials!', 'danger' )
-    }
+
+
 
 
   }

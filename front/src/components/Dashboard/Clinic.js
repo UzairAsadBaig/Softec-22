@@ -44,15 +44,18 @@ export default function Clinic() {
     const endPoint='clinics/';
     if(!clinic.openingHour.to || !clinic.openingHour.from)
     return
-    const res=await Api.post( endPoint, clinic,{headers:{Authorization:`Bearer ${token}`}} );
-    if ( res.data.status==='success' ) {
-      showAlert( 'Clinic has been created', 'success' );
+    try {
+      const res=await Api.post( endPoint, clinic, { headers: { Authorization: `Bearer ${token}` } } );
+      console.log( res );
+      if ( res.data.status==='success' ) {
+        showAlert( 'Clinic has been created', 'success' );
 
-    }
-    else {
+      }
+    } catch ( error ) {
       showAlert( 'Inputs are invalid!', 'danger' );
 
     }
+
   }
 
   return (

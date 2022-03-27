@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Table, Tag, Space } from 'antd';
 import 'antd/dist/antd.css';
+import UsersContext from '../../context/users/UsersContext';
 
 
 const Booking=( props ) => {
 
+
+  const { user }=useContext( UsersContext )
 
   const columns=[
     {
@@ -14,11 +17,10 @@ const Booking=( props ) => {
       render: text => <a>{text}</a>,
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
+    }, {
       title: 'Phone',
       dataIndex: 'phone',
       key: 'phone',
@@ -30,7 +32,7 @@ const Booking=( props ) => {
     },
   ];
 
-  const data=props.appointmentSchedule;
+  const data=user.appointmentSchedule;
 
   const openingHoursToString=( obj ) => {
     let start=obj.from;
@@ -41,11 +43,12 @@ const Booking=( props ) => {
   const modifiedData=( data ) => {
     return data&&data.map( ( e ) => {
       return {
-        key: e.key,
-        name: e.name,
-        phone: e.phone,
-        address: e.address,
-        openingHours: openingHoursToString( e.openingHours )
+
+        name: e.patient.name,
+        gender: e.patient.gender,
+        phone: e.patient.phone,
+        // openingHours: openingHoursToString( e.bookedTimeSlots )
+        openingHours: `${e.bookedTimeSlots.from} - ${e.bookedTimeSlots.to}`
       }
 
 

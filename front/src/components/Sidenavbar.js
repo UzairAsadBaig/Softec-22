@@ -17,7 +17,7 @@ export default function Sidenavbar() {
       <div className="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
           <div className="p-3">
-            <Link to='dashboard' className="img_img logo  rounded-circle mb-5" ></Link>
+            <Link to='/' className="img_img logo  rounded-circle mb-5" ></Link>
 
             <ul className="list-unstyled components mb-5">
               <li className={`${location.pathname.endsWith( "profile" )||location.pathname.endsWith( '/' )||location.pathname.endsWith( 'd' )? "active":''}`}>
@@ -56,7 +56,7 @@ export default function Sidenavbar() {
                 <ul className="nav navbar-nav ms-auto">
 
                   <li className="nav-item ms-3">
-                    <Link className="nav-link" to="/">Logout</Link>
+                    <Link className="nav-link" to="/">Home</Link>
                   </li>
                   <li className="nav-item ms-3">
                     <a className="nav-link">  <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>{user.name}</a>

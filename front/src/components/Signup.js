@@ -34,31 +34,36 @@ export default function Signup() {
   const handleSignup=async ( e ) => {
     // console.log( e.target.getAttribute( 'role' ) )
     e.preventDefault();
-    const res=await Api.post( 'users/signup', {
-      ...credentials, role: e.target.getAttribute( 'role' )
-    } );
-    console.log( res.data );
-    console.log( res.data.data );
 
-    if ( res.data.status==="success" ) {
 
-      Cookies.set( 'jwt', res.data.token );
-      console.log( Cookies.get( 'jwt' ) )
+    try {
+      const res=await Api.post( 'users/signup', {
+        ...credentials, role: e.target.getAttribute( 'role' )
+      } );
+      console.log( res.data );
+      console.log( res.data.data );
 
-      showAlert( "Signed in successfully", "success" );
+      if ( res.data.status==="success" ) {
 
-      await retrieveUserInfo( res.data.data.user._id );
-      if ( res.data.data.user.role==='doctor' ) {
-        navigate( '/dashboard' );
+        Cookies.set( 'jwt', res.data.token );
+        console.log( Cookies.get( 'jwt' ) )
+
+        showAlert( "Signed in successfully", "success" );
+
+        await retrieveUserInfo( res.data.data.user._id );
+        if ( res.data.data.user.role==='doctor' ) {
+          navigate( '/dashboard' );
+
+        }
+        else {
+          navigate( '/' );
+
+        }
 
       }
-      else {
-        navigate( '/' );
 
-      }
+    } catch ( error ) {
 
-    }
-    else {
       showAlert( 'Inputs are invalid!', 'danger' );
     }
 
