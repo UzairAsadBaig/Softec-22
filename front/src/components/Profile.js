@@ -124,7 +124,7 @@ const Profile=() => {
           }
           else{
             for (var booking of doc.appointmentSchedule) {
-              if (
+              if ((
                 (moment(values[0]._d).isBetween(
                   booking.from,
                   booking.to,
@@ -148,8 +148,9 @@ const Profile=() => {
                   selectedTo,
                   undefined,
                   "[]"
-                )
                 ) 
+                )
+                ) || checkClinicSlot(values)
               ) {
                 setCheck(false);
               }else {
