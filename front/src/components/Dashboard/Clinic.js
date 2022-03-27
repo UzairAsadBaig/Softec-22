@@ -11,7 +11,8 @@ const { RangePicker } = TimePicker;
 
 export default function Clinic() {
   
-  const {user}=useContext(UsersContext);
+  const { user }=useContext( UsersContext );
+  const { showAlert }=useContext( AppContext )
   const {onChangeGeneric}=useContext(AppContext);
   const [clinic,setClinic]= useState({
     name:"",
@@ -45,10 +46,14 @@ export default function Clinic() {
     return
     const res=await Api.post( endPoint, clinic,{headers:{Authorization:`Bearer ${token}`}} );
     console.log(res);
-    if(res.data.status=='success')
-    alert('Clinic has been created')
-    else
-    alert('Failed')
+    if ( res.data.status==='success' ) {
+      showAlert( 'Clinic has been created', 'success' );
+
+    }
+    else {
+      showAlert( 'Inputs are invalid!', 'danger' );
+
+    }
   }
 
   return (
