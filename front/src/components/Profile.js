@@ -118,11 +118,12 @@ const Profile=() => {
           "MMM DD yyyy HH:mm"
         );
           const doc=doctor[0];
-          if(doc.bookedSlots.length==0){
+          console.log(doc.bookedS.length);
+          if(doc.appointmentSchedule.length==0){
             setCheck(true);
           }
           else{
-            for (var booking of doc.bookedSlots) {
+            for (var booking of doc.appointmentSchedule) {
               if (
                 (moment(values[0]._d).isBetween(
                   booking.from,
