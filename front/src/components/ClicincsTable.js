@@ -36,7 +36,7 @@ const ClinicsTable=( props ) => {
     let start=obj?.from;
     let end=obj?.to;
    
-    return `From ${start%12}${start<=12? 'am':'pm'} to ${end}${end<=12? 'am':'pm'}`;
+    return `${start%12}${start<=12? 'am':'pm'} to ${end}${end<=12? 'am':'pm'}`;
   }
 
   const modifiedData=( data ) => {

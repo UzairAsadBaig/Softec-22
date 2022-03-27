@@ -11,6 +11,7 @@ import Footer from './Footer'
 import { useParams } from 'react-router-dom'
 import Api from '../Api'
 import UsersContext from '../context/users/UsersContext'
+import AppContext from '../context/appState/AppContext'
 
 const { RangePicker }=DatePicker;
 
@@ -22,6 +23,37 @@ const Profile=() => {
     const [from, setFrom] = useState();
     const [to, setTo] = useState();
     const [slotFree,setSlotfree]=useState('false');
+    const [booking,setBooking]=useState({
+      patient:'',
+      doctor:'',
+      medicalHistory:'',
+
+    });
+    const {onChangeGeneric,showAlert}=useContext(AppContext);
+    const {user}=useContext(UsersContext);
+    const onChange= onChangeGeneric(booking,setBooking);
+
+
+    const handleBookingSubmission=async()=>{
+      // console.log({...booking,bookedTimeSlots:{
+      //   from,
+      //   to
+      // }})
+      const endPoint='appointments'
+      const res=await Api.post( endPoint, {...booking,bookedTimeSlots:{
+        from,
+        to
+      },
+      patient:user._id,
+      doctor: doc._id
+    },{headers:{Authorization:`Bearer ${token}`}} );
+
+    if(res.data.status=='success')
+    showAlert('Appointment has been booked','success')
+    else
+    showAlert("Appointment couldn't be booked",'danger')
+      
+    }
 
     const setFilter = (values)=> {
     if (values) {
@@ -70,6 +102,8 @@ const Profile=() => {
               ) {
                 setCheck(false);
               } else {
+             
+                console.log(booking);
                  setCheck(true); 
               }
             }
@@ -149,8 +183,6 @@ const Profile=() => {
                 <div style={{ maxHeight: '37rem', overflowY: 'scroll' }}>
                   <Review reviews={doc.reviews} doctor={id} />
                 </div>
-
-
               </div>
             </div>
 
@@ -167,7 +199,6 @@ const Profile=() => {
                   <h2 className='text-center profile_head'>My Clinics</h2>
         <ClinicsTable clinics={doc.clinics} />
 
-                  <h2 className='text-center profile_head mt-5 mb-4' >Book Appointment </h2>
                     <RangePicker className='RangePicker'  showTime={{format:"HH:mm a"}} format="MMM DD yyyy HH:mm" onChange={setFilter} style={{ height: "3.5rem", width: "37rem" }}/><br/>
 
            {check && <button type="button" className="btn btn-primary mt-3 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -178,17 +209,20 @@ const Profile=() => {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">Book Appointment</h5>
+                    <h5 className="modal-title" id="exampleModalLabel">Enter your medical history</h5>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                   </div>
                   <div className="modal-body">
                   <form >
+        <div className="form-group">
+        <textarea className="form-control" name='medicalHistory' id="exampleFormControlTextarea1" rows={3} onChange={onChange} />
+        </div>
 
                   </form>
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
+                    <button type="button" onClick={handleBookingSubmission} className="btn btn-primary">Submit</button>
                   </div>
                 </div>
               </div>

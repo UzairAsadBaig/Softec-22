@@ -15,7 +15,8 @@ import Booking from "./components/Dashboard/Booking";
 import Clinic from "./components/Dashboard/Clinic";
 import UserState from "./context/users/UserState";
 import AppState from "./context/appState/AppState";
-import Alert from "./components/Alert";
+import Alert from './components/Alert';
+
 
 function App() {
   return (
@@ -67,7 +68,7 @@ function App() {
             {/* <Route exact path="login" element=""> */}
 
           </Routes>
-          <Alert />
+       <Alert/>
         </AppState>
 
       </UserState>

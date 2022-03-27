@@ -45,7 +45,6 @@ export default function Clinic() {
     if(!clinic.openingHour.to || !clinic.openingHour.from)
     return
     const res=await Api.post( endPoint, clinic,{headers:{Authorization:`Bearer ${token}`}} );
-    console.log(res);
     if ( res.data.status==='success' ) {
       showAlert( 'Clinic has been created', 'success' );
 
