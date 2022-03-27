@@ -167,7 +167,6 @@ const Profile=() => {
                   <h2 className='text-center profile_head'>My Clinics</h2>
         <ClinicsTable clinics={doc.clinics} />
 
-
                   <h2 className='text-center profile_head mt-5 mb-4' >Book Appointment </h2>
                     <RangePicker className='RangePicker'  showTime={{format:"HH:mm a"}} format="MMM DD yyyy HH:mm" onChange={setFilter} style={{ height: "3.5rem", width: "37rem" }}/><br/>
 

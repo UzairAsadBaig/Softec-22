@@ -9,9 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Sidenavbar() {
   const location=useLocation();
-  const { user, Cookies }=useContext( UsersContext )
-
-
+  const { user }=useContext( UsersContext )
 
   return (
 
@@ -58,7 +56,10 @@ export default function Sidenavbar() {
                 <ul className="nav navbar-nav ms-auto">
 
                   <li className="nav-item ms-3">
-                    <a className="nav-link" >  <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>{user.name}</a>
+                    <Link className="nav-link" to="/">Logout</Link>
+                  </li>
+                  <li className="nav-item ms-3">
+                    <a className="nav-link">  <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>{user.name}</a>
                   </li>
 
                 </ul>

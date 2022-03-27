@@ -36,7 +36,7 @@ const Review=( props ) => {
     setcomment(" ")
         setTimeout(() => {
             navigate("/", { replace: true });
-      }, 1000);
+      }, 800);
 
   }
   return (
