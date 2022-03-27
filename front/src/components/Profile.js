@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import './../css/Profile.css'
 import doctor from '../Data/doctor'
 import ClinicsTable from './ClicincsTable'
@@ -10,12 +10,14 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { useParams } from 'react-router-dom'
 import Api from '../Api'
+import UsersContext from '../context/users/UsersContext'
 
 const { RangePicker }=DatePicker;
 
 
 
 const Profile=() => {
+  const [ doc, setDoc ]=useState( {} );
   const[check,setCheck]=useState(false);
     const [from, setFrom] = useState();
     const [to, setTo] = useState();
@@ -80,14 +82,21 @@ const Profile=() => {
 
   const { id }=useParams();
 
+  const { Cookies }=useContext( UsersContext );
+  const token=Cookies.get( 'jwt' );
 
-  const getDoctorData=( id ) => {
-    Api.get( `/users/${id}`, { headers: { Authorization: `` } } )
+  const getDoctorData=async ( id ) => {
+    const res=await Api.get( `/users/${id}`, { headers: { Authorization: `Bearer ${token}` } } )
+    console.log( res.data.data );
+    setDoc( res.data.data );
+
+
   }
 
   useEffect( () => {
 
-  }, [ third ] )
+    getDoctorData( id );
+  }, [] )
 
 
   return (
@@ -106,25 +115,25 @@ const Profile=() => {
 
                 <div className="row">
                   <div className="col-6  fw-bold">Name:</div>
-                  <div className="col-6 name_val">Muzamil Ahmad</div>
+                  <div className="col-6 name_val">{doc.name}</div>
                   <hr className='line mx-auto' />
 
 
                   <div className="col-6  fw-bold">Gender:</div>
-                  <div className="col-6 gender_val">Male</div>
+                  <div className="col-6 gender_val">{doc.gender}</div>
                   <hr className='line mx-auto' />
 
                   <div className="col-6  fw-bold">Contact no:</div>
-                  <div className="col-6 phone_val">03161417342</div>
+                  <div className="col-6 phone_val">{doc.phone}</div>
                   <hr className='line mx-auto' />
 
 
                   <div className="col-6  fw-bold">Specialized in:</div>
-                  <div className="col-6 specialize_val">Heart, Stomach</div>
+                  <div className="col-6 specialize_val">{doc.speciality}</div>
                   <hr className='line mx-auto' />
 
                   <div className="col-6  fw-bold">Ratings:</div>
-                  <div className="col-6 rating_val">4.5/5</div>
+                  <div className="col-6 rating_val">{`${doc.ratingsAverage? doc.ratingsAverage:'1'}/5`}</div>
 
                 </div>
 
@@ -140,7 +149,7 @@ const Profile=() => {
 
               <div className="card-body" >
                 <div>
-                  <Review />
+                  <Review reviews={doc.reviews} doctor={id} />
                 </div>
 
 
@@ -158,7 +167,9 @@ const Profile=() => {
 
                 <div className="container text-center" style={{"padding":"5rem"}}>
                   <h2 className='text-center profile_head'>My Clinics</h2>
-                  <ClinicsTable />
+        <ClinicsTable appointments={doc.appointmentSchedule} />
+
+
                   <h2 className='text-center profile_head mt-5 mb-4' >Book Appointment </h2>
                     <RangePicker className='RangePicker'  showTime={{format:"HH:mm a"}} format="MMM DD yyyy HH:mm" onChange={setFilter} style={{ height: "3.5rem", width: "37rem" }}/><br/>
 

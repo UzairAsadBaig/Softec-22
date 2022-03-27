@@ -3,7 +3,7 @@ import { Table, Tag, Space } from 'antd';
 import 'antd/dist/antd.css';
 
 
-const ClinicsTable=(props) => {
+const ClinicsTable=( props ) => {
 
 
   const columns=[
@@ -25,66 +25,35 @@ const ClinicsTable=(props) => {
     },
     {
       title: 'Opening Hours',
-      dataIndex:'openingHours',
+      dataIndex: 'openingHours',
       key: 'openingHours',
     },
   ];
 
-  const data=[
-    {
-      key: '1',
-      name: 'John Brown',
-      address: 'New York No. 1 Lake Park',
-      phone:"033013330092",
-      openingHours:{
-        to:'Feb 18 2022 14',
-        from:'Feb 18 2022 11'
-      }
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      address: 'London No. 1 Lake Park',
-      phone:"033013330092",
-      openingHours:{
-        to:'Feb 18 2022 14',
-        from:'Feb 18 2022 11'
-      }
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      address: 'Sidney No. 1 Lake Park',
-      phone:"033013330092",
-      openingHours:{
-        to:'Feb 18 2022 14',
-        from:'Feb 18 2022 11'
-      }
-    },
-  ];
+  const data=props.appointmentSchedule;
 
-  const openingHoursToString=(obj)=>{
-    let start = obj.from ;
-   let end = obj.to;
-   return `From ${start%12}${start<=12?'am':'pm'} to ${end}${end<=12?'am':'pm'}`;
+  const openingHoursToString=( obj ) => {
+    let start=obj.from;
+    let end=obj.to;
+    return `From ${start%12}${start<=12? 'am':'pm'} to ${end}${end<=12? 'am':'pm'}`;
   }
 
-  const modifiedData=(data)=>{
-   return data.map((e)=>{
-    return {
-      key:e.key,
-      name:e.name,
-      phone:e.phone,
-      address:e.address,
-      openingHours:openingHoursToString(e.openingHours)
-    }
+  const modifiedData=( data ) => {
+    return data&&data.map( ( e ) => {
+      return {
+        key: e.key,
+        name: e.name,
+        phone: e.phone,
+        address: e.address,
+        openingHours: openingHoursToString( e.openingHours )
+      }
 
 
-   });
+    } );
   }
-  
+
   return (
-    <Table columns={columns} dataSource={modifiedData(data)} />
+    <Table columns={columns} dataSource={modifiedData( data )} />
   )
 }
 
