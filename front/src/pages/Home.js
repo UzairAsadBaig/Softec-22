@@ -50,8 +50,8 @@ const Home=() => {
             <img className="card-img-top" src={require( './../img/doc.jpg' )} style={{ "padding": "0.1rem 1rem" }} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title"><span>Dr. </span>{l.name}</h5>
-              <p className="card-text" style={{  "marginTop": "0.6rem" }}>Speciality in <span style={{ "color": "#04e9ae" }}>{l.speciality}</span></p>
-              <p className='card-text' style={{ "marginBottom": "0.4rem"}}>
+              <p className="card-text" style={{ "marginTop": "0.6rem" }}>Speciality in <span style={{ "color": "#0d6efd" }}>{l.speciality}</span></p>
+              <p className='card-text' style={{ "marginBottom": "0.4rem" }}>
                 <Rating
                   style={{ color: "orange" }}
                   initialRating={l.ratingsAverage}
@@ -65,7 +65,7 @@ const Home=() => {
               {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
               <div className='text-center'>
 
-                <Link to={`/details/${l.id}`} className="btn btn-primary" style={{ "backgroundColor": "#04e9ae", "borderColor": "#04e9ae" }}>View Details</Link>
+                <Link to={`/details/${l.id}`} className="btn btn-primary" style={{ "backgroundColor": "#0d6efd", "borderColor": "#0d6efd" }}>View Details</Link>
 
               </div>
             </div>

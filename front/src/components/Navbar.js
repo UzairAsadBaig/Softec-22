@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 
 const Navbar=() => {
-  const { user }=useContext( UsersContext )
+  const { user, Cookies }=useContext( UsersContext )
   console.log( user )
   const navigate=useNavigate();
 
@@ -14,6 +14,11 @@ const Navbar=() => {
     navigate( '/dashboard' )
   }
 
+  const handleLogout=( e ) => {
+    e.preventDefault();
+    Cookies.remove( 'jwt' );
+    navigate( '/login' );
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -35,7 +40,7 @@ const Navbar=() => {
                 {user.name}
           </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a className="dropdown-item" href="/">Logout</a></li>
+                <li><a className="dropdown-item" onClick={handleLogout} >Logout</a></li>
           </ul>
         </li>
             <li className="nav-item ms-4">

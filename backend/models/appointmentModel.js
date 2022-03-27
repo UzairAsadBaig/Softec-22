@@ -13,6 +13,17 @@ const appointmentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
+
+// ! QUERRY MIDDLEWARE: runs before executing any find query
+appointmentSchema.pre( 'find', function ( next ) {
+
+  this.populate( { path: 'patient' } )
+  next();
+
+} )
+
+
 const appointment = mongoose.model("Appointment", appointmentSchema);
 
 module.exports = appointment;

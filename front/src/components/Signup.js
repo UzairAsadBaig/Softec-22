@@ -32,8 +32,11 @@ export default function Signup() {
   // let userId;
 
   const handleSignup=async ( e ) => {
+    // console.log( e.target.getAttribute( 'role' ) )
     e.preventDefault();
-    const res=await Api.post( 'users/signup', credentials );
+    const res=await Api.post( 'users/signup', {
+      ...credentials, role: e.target.getAttribute( 'role' )
+    } );
     console.log( res.data );
     console.log( res.data.data );
 
@@ -55,6 +58,9 @@ export default function Signup() {
       }
 
     }
+    else {
+      showAlert( 'Inputs are invalid!', 'danger' );
+    }
 
 
   }
@@ -73,6 +79,7 @@ const changeUser=(e)=>{
   if ( e.target.name!==USER ) {
     e.target.name==='patient'? setUser( 'patient' ):setUser( 'doctor' );
     firstForm.current.reset();
+
     secForm.current.reset();
 
   }  
@@ -85,13 +92,13 @@ return (
       <h2 className="form-title">Sign up</h2>
       <div className="row btn_row">
         <div className="col-3">
-          <button type="button" name='patient' className="btn btn-primary btn_user btn_user_active" onClick={(e)=>changeUser(e)}>Patient</button>  
+            <button type="button" name='patient' className={`btn btn-primary btn_user ${USER==='patient'? 'btn_user_active':''}`} onClick={( e ) => changeUser( e )}>Patient</button>  
         </div>
         <div className="col-3">
-          <button type="button" name='doctor' className="btn btn-primary btn_user " onClick={(e)=>changeUser(e)}>Doctor</button>  
+            <button type="button" name='doctor' className={`btn btn-primary btn_user ${USER==='doctor'? 'btn_user_active':''}`} onClick={( e ) => changeUser( e )}>Doctor</button>  
         </div>
       </div>
-        <form ref={firstForm} onSubmit={handleSignup} className={`register-form ${USER!=='patient'? "displayNone":''}`} id="register-form">
+        <form ref={firstForm} role="patient" onSubmit={handleSignup} className={`register-form ${USER!=='patient'? "displayNone":''}`} id="register-form">
         <div className={`form-group `} >
             <input type="text" name="name" onChange={onChange} id="name" placeholder="Your Name" />
         </div>
@@ -128,7 +135,7 @@ return (
 
 
 
-        <form ref={secForm} onSubmit={handleSignup} className={`register-form ${USER!=='doctor'? "displayNone":''}`} id="register-form">
+        <form ref={secForm} role="doctor" onSubmit={handleSignup} className={`register-form ${USER!=='doctor'? "displayNone":''}`} id="register-form">
         <div className={`form-group `} >
             <input type="text" name="name" id="name" onChange={onChange} placeholder="Your Name" />
         </div>
