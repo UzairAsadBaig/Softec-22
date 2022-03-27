@@ -150,7 +150,7 @@ const Profile=() => {
                   "[]"
                 ) 
                 )
-                ) || checkClinicSlot(values)
+                ) 
               ) {
                 setCheck(false);
               }else {
