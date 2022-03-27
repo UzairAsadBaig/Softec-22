@@ -17,7 +17,7 @@ export default function Clinic() {
     name:"",
     address:"",
     contactInfo:"",
-    openingHours:{
+    openingHour:{
       to:"",
       from:""
     },
@@ -28,7 +28,7 @@ export default function Clinic() {
 
   const setOpeningHours = (value)=>{
 
-    setClinic({...clinic,openingHours : {
+    setClinic({...clinic,openingHour : {
       from:new Date(value[0]._d).getHours(),
       to:new Date(value[1]._d).getHours()
     }})
@@ -41,7 +41,7 @@ export default function Clinic() {
   const handleClinicSubmission=async (e)=>{
     e.preventDefault();
     const endPoint='clinics/';
-    if(!clinic.openingHours.to || !clinic.openingHours.from)
+    if(!clinic.openingHour.to || !clinic.openingHour.from)
     return
     const res=await Api.post( endPoint, clinic,{headers:{Authorization:`Bearer ${token}`}} );
     console.log(res);

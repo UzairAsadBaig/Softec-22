@@ -25,16 +25,17 @@ const ClinicsTable=( props ) => {
     },
     {
       title: 'Opening Hours',
-      dataIndex: 'openingHours',
-      key: 'openingHours',
+      dataIndex: 'openingHour',
+      key: 'openingHour',
     },
   ];
 
-  const data=props.appointmentSchedule;
-
+  const data=props.clinics;
   const openingHoursToString=( obj ) => {
-    let start=obj.from;
-    let end=obj.to;
+    // console.log(obj);
+    let start=obj?.from;
+    let end=obj?.to;
+   
     return `From ${start%12}${start<=12? 'am':'pm'} to ${end}${end<=12? 'am':'pm'}`;
   }
 
@@ -43,9 +44,9 @@ const ClinicsTable=( props ) => {
       return {
         key: e.key,
         name: e.name,
-        phone: e.phone,
+        phone: e.contactInfo,
         address: e.address,
-        openingHours: openingHoursToString( e.openingHours )
+        openingHour: openingHoursToString( e.openingHour )
       }
 
 

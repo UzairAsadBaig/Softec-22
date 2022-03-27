@@ -87,14 +87,12 @@ const Profile=() => {
 
   const getDoctorData=async ( id ) => {
     const res=await Api.get( `/users/${id}`, { headers: { Authorization: `Bearer ${token}` } } )
-    console.log( res.data.data );
     setDoc( res.data.data );
 
 
   }
 
   useEffect( () => {
-
     getDoctorData( id );
   }, [] )
 
@@ -167,7 +165,7 @@ const Profile=() => {
 
                 <div className="container text-center" style={{"padding":"5rem"}}>
                   <h2 className='text-center profile_head'>My Clinics</h2>
-        <ClinicsTable appointments={doc.appointmentSchedule} />
+        <ClinicsTable clinics={doc.clinics} />
 
 
                   <h2 className='text-center profile_head mt-5 mb-4' >Book Appointment </h2>

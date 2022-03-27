@@ -120,6 +120,11 @@ userSchema.virtual( 'reviews', {
     localField: '_id',
     foreignField: 'doctor'
 } )
+userSchema.virtual( 'clinics', {
+    ref: 'Clinic',
+    localField: '_id',
+    foreignField: 'doctor'
+} )
 
 
 //Todo: ************************** Document/query/aggregation middlewares ******************************

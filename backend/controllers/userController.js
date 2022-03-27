@@ -127,7 +127,7 @@ exports.deleteMe=catchAsync( async ( req, res, next ) => {
 exports.getAllUsers=factory.getAll( User, null, { role: 'doctor' } );
 
 // FIX: get single users basaed on id
-exports.getUser=factory.getOne( User, { path: 'reviews appointmentSchedule'  } );
+exports.getUser=factory.getOne( User, { path: 'reviews appointmentSchedule clinics'  } );
 
 // FIX: Create user basaed (By Admins)
 exports.createUser=factory.createOne( User, { ret: true } );
