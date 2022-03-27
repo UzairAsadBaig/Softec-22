@@ -36,9 +36,7 @@ const ClinicSchema=new mongoose.Schema( {
     required: [ true, "Please enter clinic contact info" ],
     trim: true
   }
-
-
-
+  
 
 }, {
   // TO SEE VIRTUAL FIELDS 
