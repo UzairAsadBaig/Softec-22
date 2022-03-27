@@ -34,6 +34,55 @@ const Profile=() => {
     const onChange= onChangeGeneric(booking,setBooking);
 
 
+    const checkClinicSlot=(values)=>{
+     let clinicSlots=[]; 
+     doc.clinics.map((e)=>{
+       clinicSlots.push(e.openingHour);
+      });
+
+      var selectedFrom = moment(new Date(values[0]._d)).format(
+        "MMM DD yyyy HH:mm"
+      );
+      var selectedTo = moment(new Date(values[1]._d)).format(
+        "MMM DD yyyy HH:mm"
+      );
+
+      for (var booking of clinicSlots) {
+        if (
+          moment(values[0]._d).isBetween(
+            booking.from,
+            booking.to,
+            undefined,
+            "[]"
+          ) ||
+          moment(values[1]._d).isBetween(
+            booking.from,
+            booking.to,
+            undefined,
+            "[]"
+          ) ||
+          moment(booking.from).isBetween(
+            selectedFrom,
+            selectedTo,
+            undefined,
+            "[]"
+          ) ||
+          moment(booking.to).isBetween(
+            selectedFrom,
+            selectedTo,
+            undefined,
+            "[]"
+          )
+        ){
+          return true;
+        }
+      }
+
+     return false
+    }
+
+
+
     const handleBookingSubmission=async()=>{
       // console.log({...booking,bookedTimeSlots:{
       //   from,
@@ -75,7 +124,7 @@ const Profile=() => {
           else{
             for (var booking of doc.bookedSlots) {
               if (
-                moment(values[0]._d).isBetween(
+                (moment(values[0]._d).isBetween(
                   booking.from,
                   booking.to,
                   undefined,
@@ -99,9 +148,10 @@ const Profile=() => {
                   undefined,
                   "[]"
                 )
+                ) 
               ) {
                 setCheck(false);
-              } else {
+              }else {
              
                 console.log(booking);
                  setCheck(true); 
