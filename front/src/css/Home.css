@@ -72,3 +72,6 @@
 .card {
   border-radius: 1.25rem;
 }
+.ratingNumber {
+  margin-right: 0.3rem;
+}

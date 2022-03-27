@@ -58,7 +58,9 @@ const Home=() => {
                   emptySymbol="fa fa-star-o fa-1x"
                   fullSymbol="fa fa-star fa-1x"
                   readonly
+                  className='ratingNumber'
           />
+           ({+l.ratingsQuantity})
               </p>
               {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
               <div className='text-center'>
