@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import '../../css/Profile.css'
 import doctor from '../../Data/doctor'
 import ClinicsTable from '../ClicincsTable'
@@ -10,7 +10,7 @@ import Footer from "../Footer"
 import { useParams } from 'react-router-dom'
 import Api from '../../Api'
 import Rating from "react-rating"
-
+import UsersContext from '../../context/users/UsersContext'
 
 
 const { RangePicker }=DatePicker;
@@ -18,6 +18,25 @@ const { RangePicker }=DatePicker;
 
 
 const DocProfile=() => {
+  const [ doc, setDoc ]=useState( {} );
+
+  const { id }=useParams();
+
+  const { Cookies, user }=useContext( UsersContext );
+  const token=Cookies.get( 'jwt' );
+
+  const getDoctorData=async ( id ) => {
+    const res=await Api.get( `/users/${id}`, { headers: { Authorization: `Bearer ${token}` } } )
+    console.log( res.data.data );
+    setDoc( res.data.data );
+
+
+  }
+
+  useEffect( () => {
+
+    getDoctorData( user.id );
+  }, [] )
 
 
 
@@ -34,27 +53,28 @@ const DocProfile=() => {
 
                 <div className="row">
                   <div className="col-6  fw-bold">Name:</div>
-                  <div className="col-6 name_val">Muzamil Ahmad</div>
+                  <div className="col-6 name_val">{doc.name}</div>
                   <hr className='line mx-auto' />
 
 
                   <div className="col-6  fw-bold">Gender:</div>
-                  <div className="col-6 gender_val">Male</div>
+                  <div className="col-6 gender_val">{doc.gender}</div>
                   <hr className='line mx-auto' />
 
                   <div className="col-6  fw-bold">Contact no:</div>
-                  <div className="col-6 phone_val">03161417342</div>
+                  <div className="col-6 phone_val">{doc.phone}</div>
                   <hr className='line mx-auto' />
 
 
                   <div className="col-6  fw-bold">Specialized in:</div>
-                  <div className="col-6 specialize_val">Heart, Stomach</div>
+                  <div className="col-6 specialize_val">{doc.speciality}</div>
                   <hr className='line mx-auto' />
 
                   <div className="col-6  fw-bold">Ratings:</div>
-                  <div className="col-6 rating_val">4.5/5</div>
+                  <div className="col-6 rating_val">{`${doc.ratingsAverage? doc.ratingsAverage:'1'}/5`}</div>
 
                 </div>
+
 
 
               </div>
@@ -69,7 +89,7 @@ const DocProfile=() => {
 
               <div className="card-body" >
                 <div>
-                      {doctor && (doctor.map(review=>{
+                  {doc.reviews&&( doc.reviews.map( review => {
                             return <div className="text-left">
                                   <Rating
                           style={{ color: "orange" }}
@@ -80,7 +100,7 @@ const DocProfile=() => {
 
                         />
                         <p>{review.comment}</p>
-                        <p>By : {review.name}</p>
+                              <p>By : {review.patient.name}</p>
                         <hr/>
                             </div>
                         }))}

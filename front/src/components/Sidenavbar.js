@@ -2,16 +2,15 @@ import React, { useContext } from "react";
 import { Link, Outlet } from 'react-router-dom'
 import './../css/sideNavbar.css'
 import { useLocation } from 'react-router-dom'
-// import UsersContext from '../context/users/UsersContext';
+import UsersContext from '../context/users/UsersContext';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export default function Sidenavbar() {
   const location=useLocation();
-  // const { user }=useContext( UsersContext )
+  const { user }=useContext( UsersContext )
 
-  const user ={
-     name:'Uzair'
-  }
   return (
 
     <>
@@ -52,14 +51,14 @@ export default function Sidenavbar() {
         <div id="content">
           <nav className="navbar navbar-expand navbar-light bg-light dashboard_nav">
             <div className="container-fluid">
-              <span className="text-black">CureMD</span>
+              <span className="text-black">Health Care</span>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="nav navbar-nav ms-auto">
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">Logout</a>
+                  <li className="nav-item ms-3">
+                    <Link className="nav-link" to="/">Logout</Link>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">{user.name}</a>
+                  <li className="nav-item ms-3">
+                    <a className="nav-link">  <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>{user.name}</a>
                   </li>
 
                 </ul>

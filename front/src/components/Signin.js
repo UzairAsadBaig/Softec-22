@@ -32,7 +32,14 @@ export default function Signin() {
       showAlert( "Logged in successfully", "success" );
 
       await retrieveUserInfo( res.data.data.user._id );
-      navigate( '/' );
+      if ( res.data.data.user.role==='doctor' ) {
+        navigate( '/dashboard' );
+
+      }
+      else {
+        navigate( '/' );
+
+      }
 
     }
 

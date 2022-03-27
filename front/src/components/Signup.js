@@ -45,7 +45,14 @@ export default function Signup() {
       showAlert( "Signed in successfully", "success" );
 
       await retrieveUserInfo( res.data.data.user._id );
-      navigate( '/' );
+      if ( res.data.data.user.role==='doctor' ) {
+        navigate( '/dashboard' );
+
+      }
+      else {
+        navigate( '/' );
+
+      }
 
     }
 
@@ -102,7 +109,7 @@ return (
         
 
       
-          <FormDropdown list={[ 'male', 'female' ]} name='gender' width='30%' onChange={onChange} formVal={credentials} setFormVal={setCredentials} />
+          <FormDropdown list={[ 'male', 'female' ]} name='gender' width='30%' onChange={onChange} formVal={credentials} setFormVal={setCredentials} defaultValue={credentials.gender} />
 
 
 
@@ -143,7 +150,7 @@ return (
         
 
       
-          <FormDropdown list={[ 'male', 'female' ]} name='gender' width='30%' onChange={onChange} formVal={credentials} setFormVal={setCredentials} />
+          <FormDropdown list={[ 'male', 'female' ]} name='gender' width='30%' onChange={onChange} formVal={credentials} setFormVal={setCredentials} defaultValue={credentials.gender} />
 
 
 

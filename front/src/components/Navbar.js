@@ -40,7 +40,7 @@ const Navbar=() => {
         </li>
             <li className="nav-item ms-4">
 
-              {user.role!=='doctor'? '':<button type="button" className="btn btn-primary" onCLick={goTODashboard}>Dashboard</button>}
+              {user.role!=='doctor'? '':<Link type="button" to="dashboard" className="btn btn-primary" >Dashboard</Link>}
               {/* 
               {user.role!=='doctor'? <button type="button" className="btn btn-primary">My Bookings</button>:<button type="button" className="btn btn-primary" onCLick={goTODashboard}>Dashboard</button>} */}
         </li>
