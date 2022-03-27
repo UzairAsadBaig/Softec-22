@@ -24,7 +24,7 @@ export default function Sidenavbar() {
                 <Link to='/dashboard/profile'>Profile</Link>
               </li>
               <li className={`${location.pathname.endsWith( "clinic" )? "active":''}`}>
-                <Link to='/dashboard/clinic'>Clinic</Link>
+                <Link to='/dashboard/clinic'>Add New Clinic</Link>
               </li>
               <li className={`${location.pathname.endsWith( "booking" )? "active":''}`}>
                 <Link to='/dashboard/booking'>All Bookings</Link>

@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import card from '../Data/card';
 import './../css/Home.css'
+import Rating from "react-rating"
 import UsersContext from '../context/users/UsersContext';
 import { Link } from 'react-router-dom';
 
@@ -49,8 +50,16 @@ const Home=() => {
             <img className="card-img-top" src={require( './../img/doc.jpg' )} style={{ "padding": "0.1rem 1rem" }} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title"><span>Dr. </span>{l.name}</h5>
-              <p className="card-text" style={{ "marginBottom": "0.1", "marginTop": "0.4rem" }}>Speciality in <span style={{ "color": "#04e9ae" }}>{l.speciality}</span></p>
-              <p className='card-text' style={{ "marginBottom": "0.4rem", "marginTop": "0.1rem" }}>{l.phone}</p>
+              <p className="card-text" style={{  "marginTop": "0.6rem" }}>Speciality in <span style={{ "color": "#04e9ae" }}>{l.speciality}</span></p>
+              <p className='card-text' style={{ "marginBottom": "0.4rem"}}>
+                <Rating
+                  style={{ color: "orange" }}
+                  initialRating={l.ratingsAverage}
+                  emptySymbol="fa fa-star-o fa-1x"
+                  fullSymbol="fa fa-star fa-1x"
+                  readonly
+          />
+              </p>
               {/* <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
               <div className='text-center'>
 

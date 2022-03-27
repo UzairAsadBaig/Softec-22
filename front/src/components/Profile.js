@@ -111,7 +111,7 @@ const Profile=() => {
               <div className="card-body py-4">
 
 
-                <div className="row">
+                <div className="row" >
                   <div className="col-6  fw-bold">Name:</div>
                   <div className="col-6 name_val">{doc.name}</div>
                   <hr className='line mx-auto' />
@@ -146,7 +146,7 @@ const Profile=() => {
             <div className="card profile_card" >
 
               <div className="card-body" >
-                <div>
+                <div style={{ maxHeight: '37rem', overflowY: 'scroll' }}>
                   <Review reviews={doc.reviews} doctor={id} />
                 </div>
 

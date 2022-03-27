@@ -3,9 +3,12 @@ import Rating from "react-rating"
 import Api from '../Api';
 import UsersContext from '../context/users/UsersContext';
 import doctor from '../Data/doctor'
+import { useNavigate } from "react-router-dom";
+
 
 const Review=( props ) => {
-  const { reviews }=props;
+ let navigate = useNavigate();
+   const { reviews }=props;
 
 
     const [rating , setrating] = useState(5)
@@ -25,12 +28,15 @@ const Review=( props ) => {
     } )
 
     if ( res.data.status==='success' ) {
-      form.current.reset();
+      
     }
     else {
 
     }
-
+    setcomment(" ")
+        setTimeout(() => {
+            navigate("/", { replace: true });
+      }, 1000);
 
   }
   return (
