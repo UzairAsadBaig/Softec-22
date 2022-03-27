@@ -6,26 +6,31 @@
   outline: none;
   padding: 0.6rem;
   padding-left: 0.9rem;
+
   box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
   -webkit-box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
   -moz-box-shadow: 22px 17px 20px -10px rgba(0, 0, 0, 0.34);
-  border: 2px solid #04e9ae;
+  border: 2px solid #0d6efd;
 }
 .form-inp:focus {
   border: 2px solid #b3b3b3;
 }
 /* span */
 .text-span {
-  color: #04e9ae;
-  text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
+  color: #0d6efd;
+  text-shadow: 2px 2px 4px #000000;
+
+  /* text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
     1px -1px 0 rgb(33 43 68 / 0%), -1px 1px 0 transparent,
     1px 1px 0 rgb(33 43 68 / 0%);
+    */
 }
 .text-span3 {
-  color: #3eebd4;
+  color: #0d6efd;
   text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
     1px -1px 0 rgb(33 43 68 / 0%), -1px 1px 0 transparent,
     1px 1px 0 rgb(33 43 68 / 0%);
+     text-shadow: 2px 2px 4px #000000;
 }
 .text-span5 {
   text-shadow: 2.2px 2.2px 0 #212b44, -1px -1px 0 transparent,
@@ -33,7 +38,7 @@
     1px 1px 0 rgb(33 43 68 / 0%);
 }
 .text-span4 {
-  background-color: #3eebd4;
+  background-color: #0d6efd;
   color: white;
   padding: 0.5rem 1.3rem;
   border-radius: 25px;
@@ -44,11 +49,11 @@
 }
 .text-span4:hover {
   background-color: white;
-  color: #04e9ae;
+  color: #0d6efd;
   padding: 0.5rem 1.3rem;
   border-radius: 25px;
   font-weight: 450;
-  border: 2px solid #04e9ae;
+  border: 2px solid #0d6efd;
   outline: none;
 }
 .heading-awesome {

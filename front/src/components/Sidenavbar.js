@@ -5,19 +5,26 @@ import { useLocation } from 'react-router-dom'
 import UsersContext from '../context/users/UsersContext';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { useNavigate } from "react-router-dom";
 
 export default function Sidenavbar() {
   const location=useLocation();
-  const { user }=useContext( UsersContext )
+  const { user, Cookies }=useContext( UsersContext )
 
+  const navigate=useNavigate();
+
+  const handleLogout=( e ) => {
+    e.preventDefault();
+    Cookies.remove( 'jwt' );
+    navigate( '/login' );
+  }
   return (
 
     <>
       <div className="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
           <div className="p-3">
-            <a href="#" className="img_img logo  rounded-circle mb-5" />
+            <Link to='/dashboard' className="img_img logo  rounded-circle mb-5" />
 
             <ul className="list-unstyled components mb-5">
               <li className={`${location.pathname.endsWith( "profile" )||location.pathname.endsWith( '/' )||location.pathname.endsWith( 'd' )? "active":''}`}>
@@ -55,7 +62,7 @@ export default function Sidenavbar() {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="nav navbar-nav ms-auto">
                   <li className="nav-item ms-3">
-                    <Link className="nav-link" to="/">Logout</Link>
+                    <Link className="nav-link" onClick={handleLogout}>Logout</Link>
                   </li>
                   <li className="nav-item ms-3">
                     <a className="nav-link">  <span className='me-2'><FontAwesomeIcon icon={faUser} /></span>{user.name}</a>
