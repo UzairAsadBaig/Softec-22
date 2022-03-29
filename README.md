@@ -1,5 +1,5 @@
 # softec22
-Online portal for patient and doctors.Coded a full stack web app in 24 hours for Softec 2022 web development competition.
+Online portal for patients and doctors.Coded a full stack web app in 24 hours for Softec 2022 web development competition.
 Major module in this project were 
 => Authorization using JWT
 => Booking doctors appointment 
